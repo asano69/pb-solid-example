@@ -1,0 +1,19 @@
+.PHONY: init dev kill-ports
+
+BACKEND_PORT  := 3000
+FRONTEND_PORT := 3001
+
+
+kill-ports:
+	@lsof -ti:$(FRONTEND_PORT) | xargs -r kill -9 2>/dev/null || true
+	@lsof -ti:$(BACKEND_PORT)  | xargs -r kill -9 2>/dev/null || true
+
+init:
+	cd frontend && npm install
+	cd backend && go mod tidy
+	cd backend && go build -o tmp/main .
+	cd backend && tmp/main superuser upsert admin@mail.internal password --dir=pb_data
+
+dev: kill-ports
+	cd backend && air &
+	cd frontend && npm run dev
