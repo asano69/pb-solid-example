@@ -1,5 +1,4 @@
 
-
 ## Init
 プロジェクトは[テンプレートリポジトリ](https://gitea.internal/tmpl/sveltekit-pocketbase-tmpl)を作っておくのがシンプル。
 
@@ -21,7 +20,7 @@ export tmpl=tmpl/sveltekit-pocketbase-tmpl
 
 mkdir -p $repo_dir && cd $repo_dir
 tea repos create-from-template --login gitea.internal --template $tmpl --name $name --owner $org
-tea clone --login gitea.internal $org/$name $repo_dir
+git clone $org/$name $repo_dir
 
 cd $repo_dir
 make init
