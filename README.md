@@ -19,7 +19,7 @@ export tmpl=tmpl/solid-pocketbase-tmpl
 
 mkdir -p $repo_dir && cd $repo_dir
 tea repos create-from-template --login gitea.internal --template $tmpl --name $name --owner $org
-git clone $org/$name $repo_dir
+git clone git@gitea.internal:$org/$name $repo_dir
 
 cd $repo_dir
 make init
