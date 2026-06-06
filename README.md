@@ -54,7 +54,7 @@ pnpm create vite@latest frontend -- --template solid
 # 2. Add PocketBase + prettier + eslint
 cd frontend
 pnpm add @solidjs/router pocketbase
-pnpm add -D prettier eslint eslint-plugin-solid
+pnpm add -D prettier eslint eslint-plugin-solid husky lint-staged
 
 # 3. Static build (no adapter needed — Vite outputs static by default)
 
