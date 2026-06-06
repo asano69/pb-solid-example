@@ -72,6 +72,7 @@ npm install --save-dev prettier eslint eslint-plugin-solid
 参考：
 - https://github.com/TomaszSkrzyp/good-game
 - https://github.com/swerve731/go-solid-todo-app/tree/main/frontend
+- https://github.com/OpenListTeam/OpenList-Frontend/tree/main/src
 
 ---
 Wiki:
