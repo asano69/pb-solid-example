@@ -49,13 +49,12 @@ src/data
 
 ```sh
 # 1. Create project with official Solid template
-npm create vite@latest frontend -- --template solid
-
+pnpm create vite@latest frontend -- --template solid
 
 # 2. Add PocketBase + prettier + eslint
 cd frontend
-npm install @solidjs/router pocketbase
-npm install --save-dev prettier eslint eslint-plugin-solid
+pnpm add @solidjs/router pocketbase
+pnpm add -D prettier eslint eslint-plugin-solid
 
 # 3. Static build (no adapter needed — Vite outputs static by default)
 
