@@ -67,8 +67,11 @@ npm install --save-dev prettier eslint eslint-plugin-solid
 # src/routes/+layout.js
 ```
 
-pure-js+prettier, eslint
 
+---
+参考：
+- https://github.com/TomaszSkrzyp/good-game
+- https://github.com/swerve731/go-solid-todo-app/tree/main/frontend
 
 ---
 Wiki:
@@ -77,3 +80,6 @@ Wiki:
 
 Komodo:
 => https://komodo.app.internal/actions/6a14306c936ff851f0261730
+
+
+
