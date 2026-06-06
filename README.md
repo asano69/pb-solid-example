@@ -1,6 +1,5 @@
-
 ## Init
-プロジェクトは[テンプレートリポジトリ](https://gitea.internal/tmpl/sveltekit-pocketbase-tmpl)を作っておくのがシンプル。
+プロジェクトは[テンプレートリポジトリ](https://gitea.internal/tmpl/solid-pocketbase-tmpl)を作っておくのがシンプル。
 
 teaでgiteaにlogin
 ```sh
@@ -16,7 +15,7 @@ export name=$(date +%y%m%d)-my-app
 export org=test
 export root_dir=$HOME/test
 export repo_dir=$root_dir/$name
-export tmpl=tmpl/sveltekit-pocketbase-tmpl
+export tmpl=tmpl/solid-pocketbase-tmpl
 
 mkdir -p $repo_dir && cd $repo_dir
 tea repos create-from-template --login gitea.internal --template $tmpl --name $name --owner $org
