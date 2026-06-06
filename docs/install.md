@@ -1,4 +1,3 @@
-
 テンプレートの作成方法
 
 ```
@@ -11,3 +10,6 @@ npx sv create frontend --template minimal --types ts --no-add-ons --install npm
 cd frontend
 npm install pocketbase
 ```
+
+husky:
+- lint-stagedを使う。package.jsonにlint-stagedの処理を書く。
