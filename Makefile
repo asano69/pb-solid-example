@@ -17,3 +17,9 @@ init:
 dev: kill-ports
 	cd backend && air &
 	cd frontend && pnpm run dev
+
+
+update:
+	cd frontend && pnpm install --lockfile-only
+	cd backend && go get -u && go mod tidy
+

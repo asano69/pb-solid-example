@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "prepare": "cd .. && husky frontend/.husky"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@solidjs/router": "^0.16.1",
