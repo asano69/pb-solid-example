@@ -1,4 +1,4 @@
-module my-app
+module github.com/asano69/myapp
 
 go 1.25.9
 

@@ -1,1 +1,13 @@
-.direnv/
+*.db
+/myapp
+
+/target
+/result
+/data/
+
+pb_data/
+node_modules/
+dist/
+tmp/
+
+

@@ -1,70 +1,19 @@
-## Init
-プロジェクトは[テンプレートリポジトリ](https://gitea.internal/tmpl/solid-pocketbase-tmpl)を作っておくのがシンプル。
+# myapp
 
-teaでgiteaにlogin
-```sh
-export GITEA_SERVER_URL=https://gitea.internal
-export GITEA_SERVER_TOKEN=$(sudo -A cat /run/secrets/tea_api_token)
-tea login add  --name gitea.internal
-tea login default gitea.internal
-```
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/asano69/myapp)
 
-repositoryの作成
-```sh
-export name=$(date +%y%m%d)-my-app
-export org=test
-export root_dir=$HOME/test
-export repo_dir=$root_dir/$name
-export tmpl=tmpl/solid-pocketbase-tmpl
+## Introduction 
 
-mkdir -p $repo_dir && cd $repo_dir
-tea repos create-from-template --login gitea.internal --template $tmpl --name $name --owner $org
-git clone git@gitea.internal:$org/$name $repo_dir
-
-cd $repo_dir
-make init
-```
-## 構成
-### frontend
-src/utils
-- UIに関係しない汎用ロジック、 自分で書いた小さなヘルパー関数の置き場。可能であれば、同じ入力には必ず同じ出力を返し副作用のない関数（＝純粋関数）をおくことが好ましい。
-- SvelteKitではlibが使われるがreactではutilsが使われる。
-- JSXをおかず拡張子は、JSまたはTSになるはず。
-
-src/components/
-- 再利用可能なUIパーツ。特定のページに依存しないもの：Button.jsx, Modal.jsx, Avatar.jsx
-
-src/pages/（または views/）
-- ルートに対応する画面単位のコンポーネント。
-- Next.js/SvelteKitなどファイルベースルーティングのフレームワークではフレームワーク側が管理するので自分で作らないことも多い
-
-src/auth
-- 認証関連のコンポーネント、関数置き場。LoginForm.jsx、useAuth.js、authApi.js
-
-src/data
-- 静的データ置き場
+<img src="frontend/public/favicon.svg" width="100" align="right" />
 
 
-## Setup
-
-```sh
-# 1. Create project with official Solid template
-pnpm create vite@latest frontend -- --template solid
-
-# 2. Add PocketBase + prettier + eslint
-cd frontend
-pnpm add @solidjs/router pocketbase
-pnpm add -D prettier eslint eslint-plugin-solid husky lint-staged
-
-# 3. Static build (no adapter needed — Vite outputs static by default)
+### Tech Stack
+- Go
+- [SolidJS](https://github.com/solidjs/solid)
+- [PocketBase](https://github.com/pocketbase/pocketbase)
+- [Vega-Lite](https://github.com/vega/vega-lite)
 
 
-# 以下のファイルを編集
-# vite.config.js
-# .env
-# src/lib/pocketbase.js
-# src/routes/+layout.js
-```
 
 
 ---
