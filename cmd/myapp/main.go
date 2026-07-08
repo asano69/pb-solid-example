@@ -34,9 +34,7 @@ func main() {
 	root.Version = "0.0.1-beta.1"
 
 	root.AddCommand(
-		checkCmd(),
-		statsCmd(app),
-		orphansCmd(app),
+
 		serveCmd(app),
 		pbcmd.NewSuperuserCommand(app),
 	)

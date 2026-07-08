@@ -4,17 +4,12 @@
 package db
 
 import (
-	"database/sql"
-
-	"errors"
-
-	"github.com/pocketbase/dbx"
-	"github.com/pocketbase/pocketbase"
-	"github.com/pocketbase/pocketbase/core"
-	"os"
-	"strings"
-
+	"github.com/asano69/myapp/internal/errs"
 	_ "github.com/asano69/myapp/migrations"
+
+	"github.com/pocketbase/pocketbase"
+
+	"os"
 )
 
 type Database struct{ app *pocketbase.PocketBase }
@@ -57,6 +52,6 @@ func newDatabase(app *pocketbase.PocketBase) (*Database, error) {
 	}
 
 	db := &Database{app: app}
-	db.registerHooks()
+
 	return db, nil
 }
