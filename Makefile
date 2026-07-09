@@ -1,5 +1,12 @@
 BINARY := myapp
 
+.PHONY init
+init:
+	fastmod --hidden myapp $(shell basename $$PWD)
+	find . -type f -name '*myapp*' | while read -r f; do \
+		mv -- "$$f" "$${f//myapp/$(notdir $(CURDIR))}"; \
+	done
+
 .PHONY: frontend-deps
 frontend-deps:
 	cd frontend && pnpm install
