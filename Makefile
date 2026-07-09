@@ -1,10 +1,10 @@
-BINARY := myapp
+BINARY := $(notdir $(CURDIR))
+APP := $(notdir $(CURDIR))
 
-.PHONY init
 init:
-	fastmod --hidden myapp $(shell basename $$PWD)
-	find . -type f -name '*myapp*' | while read -r f; do \
-		mv -- "$$f" "$${f//myapp/$(notdir $(CURDIR))}"; \
+	fastmod --hidden myapp $(APP) --glob '!Makefile'
+	find . -depth \( -type f -o -type d \) -name '*myapp*' | while read -r f; do \
+		mv -- "$$f" "$$(dirname "$$f")/$$(basename "$$f" | sed 's/myapp/$(APP))/g')"; \
 	done
 
 .PHONY: frontend-deps
