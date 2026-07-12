@@ -1,4 +1,4 @@
-DIR))
+BINARY := $(notdir $(CURDIR))
 APP := $(notdir $(CURDIR))
 # Ports used by the dev servers (frontend, backend, and PocketBase-style API)
 PORTS := 3000 3001
@@ -35,7 +35,7 @@ kill-ports:
 
 .PHONY: server
 server: kill-ports
-	#./mineralbox migrate up --dir=pb_data
+	#./kithara migrate up --dir=pb_data
 	./$(BINARY) superuser upsert admin@mail.internal password --dir=pb_data
 	./$(BINARY) serve
 
@@ -56,14 +56,13 @@ dev-back: clean
 
 .PHONY: test
 test:
+	cd frontend && pnpm test
 	go test ./...
+
 
 format:
 	cd frontend && pnpm exec prettier --write "src/**/*.{js,jsx,css}"
 
 migrate-collections:
-	rm -f migrations/*.go
-	yes | go run ./cmd/mineralbox migrate collections # 開発初期限定
-
-
-
+	ls -1 migrations/*.go | sort | head -n -1 | xargs rm -f
+	yes | go run ./cmd/kithara migrate collections # 開発初期限定
