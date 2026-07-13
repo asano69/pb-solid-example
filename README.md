@@ -8,10 +8,9 @@
 
 - このプロジェクトの目的は、汎用的な目的に使えるテンプレートとなるリポジトリをつくることです。
 - このアプリは、SPA＋CSRの個人向けのアプリです。
-- バックエンドはGo+PocketBase **v0.39+**、frontendは、solid.js + **tailwind v4**で書かれています。
+
 
 ### Tech Stack
-- Go
-- [SolidJS](https://github.com/solidjs/solid)
-- [PocketBase](https://github.com/pocketbase/pocketbase)
+- backend: Go+PocketBase v0.39+
+- frontend: solid.js + tailwind v4
 
