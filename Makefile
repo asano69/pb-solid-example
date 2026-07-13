@@ -7,7 +7,7 @@ PORTS := 3000 3001
 init:
 	fastmod --hidden myapp $(APP) --glob '!Makefile'
 	find . -depth \( -type f -o -type d \) -name '*myapp*' | while read -r f; do \
-		mv -- "$$f" "$$(dirname "$$f")/$$(basename "$$f" | sed 's/myapp/$(APP))/g')"; \
+		mv -- "$$f" "$$(dirname "$$f")/$$(basename "$$f" | sed 's/myapp/$(APP)/g')"; \
 	done
 
 .PHONY: frontend-deps
