@@ -35,7 +35,7 @@ kill-ports:
 
 .PHONY: server
 server: kill-ports
-	#./kithara migrate up --dir=pb_data
+	#./myapp migrate up --dir=pb_data
 	./$(BINARY) superuser upsert admin@mail.internal password --dir=pb_data
 	./$(BINARY) serve
 
@@ -65,4 +65,4 @@ format:
 
 migrate-collections:
 	ls -1 migrations/*.go | sort | head -n -1 | xargs rm -f
-	yes | go run ./cmd/kithara migrate collections # 開発初期限定
+	yes | go run ./cmd/myapp migrate collections # 開発初期限定
