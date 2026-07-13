@@ -57,13 +57,13 @@ RUN addgroup -g 1000 myapp && \
 COPY --from=go-builder /build/myapp /usr/local/bin/myapp
 
 RUN mkdir -p /certs /myapp/data
-RUN chown -R 1000:1000 /myapp
+RUN chown -R myapp:myapp /myapp
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 3000
 
-ENTRYPOINT ["entrypoint.sh"]
-CMD ["myapp", "serve"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["myapp", "serve", "--dir=data"]
 
