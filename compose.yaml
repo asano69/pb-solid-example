@@ -8,7 +8,7 @@ services:
     env_file:
       - myapp.env
     volumes:
-      - ./data:/myapp/pb_data
+      - ./data:/myapp/data
         #- /etc/ssl/certs/root_ca.crt:/certs/root_ca.crt:ro # optional
     environment:
       - TZ=Europe/London
