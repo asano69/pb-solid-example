@@ -12,7 +12,7 @@ import (
 	"github.com/asano69/myapp/internal/cmd/serve"
 
 	"github.com/asano69/myapp/internal/config"
-
+    _ "github.com/asano69/myapp/migrations"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 )
 
