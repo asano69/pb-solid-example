@@ -39,8 +39,6 @@ RUN --mount=type=cache,target=/go/pkg/mod \
 # ==========================================
 FROM alpine:3.23
 
-
-
 WORKDIR /myapp
 
 RUN apk add --no-cache \
