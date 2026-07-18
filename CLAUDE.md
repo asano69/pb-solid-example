@@ -11,7 +11,7 @@
 - All errors are user-facing, so messages should be clear.
 - Keep functions small and focused.
 - Module files should re-export what's needed, hide implementation details.
-- 変更内容を git diff 形式で出力する。
+
 
 ## Tech Stack
 
