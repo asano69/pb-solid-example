@@ -67,4 +67,4 @@ format:
 migrate-collections:
 	ls -1 migrations/*.go | sort | head -n -1 | xargs rm -f
 	yes | go run ./cmd/myapp migrate collections
-    ls -1 migrations/*.go | sort | head -n -1 | xargs rm -f
+	ls -1 migrations/*.go | sort | head -n -1 | xargs rm -f
