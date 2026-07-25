@@ -29,14 +29,14 @@ type Config struct {
 //
 // Recognised variables:
 //
-//	SERVER_HOST         default "0.0.0.0"
-//	SERVER_PORT         default 3000
+//	MYAPP_SERVER_HOST         default "0.0.0.0"
+//	MYAPP_SERVER_PORT         default 3000
 //	DATA_ROOT           default "."
 
 func Load() (*Config, error) {
 	cfg := &Config{
 		Server: ServerConfig{
-			Host: envString("SERVER_HOST", "0.0.0.0"),
+			Host: envString("MYAPP_SERVER_HOST", "0.0.0.0"),
 			Port: 3000,
 		},
 		Data: DataConfig{
@@ -44,7 +44,7 @@ func Load() (*Config, error) {
 		},
 	}
 
-	port, err := envInt("SERVER_PORT", cfg.Server.Port)
+	port, err := envInt("MYAPP_SERVER_PORT", cfg.Server.Port)
 	if err != nil {
 		return nil, err
 	}
