@@ -7,6 +7,7 @@ import { createSignal, onCleanup, Show } from "solid-js";
 import "./style.css";
 import Home from "./routes/Home";
 import Settings from "./routes/Settings";
+import Stats from "./routes/Stats";
 import Login from "./routes/Login";
 
 import pb from "./lib/pb";
@@ -44,6 +45,7 @@ render(
       <Router>
         <Route path="/" component={Home} />
         <Route path="/settings" component={Settings} />
+        <Route path="/stats" component={Stats} />
       </Router>
     </AuthGate>
   ),
