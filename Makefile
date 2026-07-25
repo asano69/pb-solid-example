@@ -1,18 +1,19 @@
 include myapp.env
 export
 
-BINARY := $(notdir $(CURDIR))
-APP := $(notdir $(CURDIR))
+BINARY := myapp
+
 # Ports used by the dev servers (frontend, backend, and PocketBase-style API)
 PORTS := 3000 3001
 
 
 init:
-	fastmod --hidden myapp $(APP) --glob '!Makefile'
+	fastmod --hidden myapp $(notdir $(CURDIR)) --glob '!Makefile'
 	find . -depth \( -type f -o -type d \) -name '*myapp*' | while read -r f; do \
-		mv -- "$$f" "$$(dirname "$$f")/$$(basename "$$f" | sed 's/myapp/$(APP)/g')"; \
+		mv -- "$$f" "$$(dirname "$$f")/$$(basename "$$f" | sed 's/myapp/$(notdir $(CURDIR))/g')"; \
 	done
-    fastmod myapp $(APP)
+	fastmod myapp $(notdir $(CURDIR))
+
 
 .PHONY: frontend-deps
 frontend-deps:
