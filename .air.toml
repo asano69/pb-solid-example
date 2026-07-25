@@ -6,7 +6,7 @@ testdata_dir = "testdata"
 tmp_dir = "tmp"
 
 [build]
-args_bin = ["serve", "--dir=./pb_data"]
+args_bin = ["serve", "--dir=./pb_data", "--dev"]
 bin = "./tmp/main"
 cmd = "go build -o ./tmp/main ./cmd/myapp"
 clean_on_exit = true

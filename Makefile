@@ -42,7 +42,7 @@ kill-ports:
 server: kill-ports
 	#./myapp migrate up --dir=pb_data
 	./$(BINARY) superuser upsert admin@mail.internal password --dir=pb_data
-	./$(BINARY) serve
+	./$(BINARY) serve --dev
 
 # --------------
 .PHONY: clean
@@ -51,7 +51,7 @@ server: kill-ports
 # port: 3001
 .PHONY: dev-front
 dev-front: clean
-	npx concurrently -n "frontend,backend" -c "blue,green" "cd frontend && pnpm dev" "./$(BINARY) serve"
+	npx concurrently -n "frontend,backend" -c "blue,green" "cd frontend && pnpm dev" "./$(BINARY) serve --dev"
 
 # port: 3000
 .PHONY: dev-back
