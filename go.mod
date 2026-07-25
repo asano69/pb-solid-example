@@ -4,7 +4,6 @@ go 1.25.9
 
 require (
 	github.com/pocketbase/pocketbase v0.39.4
-	github.com/sirupsen/logrus v1.9.4
 	github.com/spf13/cobra v1.10.2
 )
 

@@ -9,6 +9,7 @@ package serve
 import (
 	"fmt"
 	"io/fs"
+	"log/slog"
 
 	"github.com/asano69/myapp/internal/assets"
 	"github.com/asano69/myapp/internal/config"
@@ -16,8 +17,6 @@ import (
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
-
-	"github.com/sirupsen/logrus"
 )
 
 // Run registers all routes and starts listening.
@@ -39,7 +38,7 @@ func Run(app *pocketbase.PocketBase, cfg *config.Config) error {
 		return e.Next()
 	})
 
-	logrus.WithField("addr", addr).Info("listening")
+	slog.Info("listening", "addr", addr)
 	return apis.Serve(app, apis.ServeConfig{
 		HttpAddr:        addr,
 		ShowStartBanner: false,
