@@ -813,6 +813,241 @@ func init() {
 					"duration": 86400
 				},
 				"viewRule": "id = @request.auth.id"
+			},
+			{
+				"createRule": null,
+				"deleteRule": null,
+				"fields": [
+					{
+						"autogeneratePattern": "[a-z0-9]{15}",
+						"help": "",
+						"hidden": false,
+						"id": "text3208210256",
+						"max": 15,
+						"min": 15,
+						"name": "id",
+						"pattern": "^[a-z0-9]+$",
+						"presentable": false,
+						"primaryKey": true,
+						"required": true,
+						"system": true,
+						"type": "text"
+					},
+					{
+						"autogeneratePattern": "",
+						"help": "",
+						"hidden": false,
+						"id": "text2324736937",
+						"max": 0,
+						"min": 0,
+						"name": "key",
+						"pattern": "",
+						"presentable": false,
+						"primaryKey": false,
+						"required": true,
+						"system": false,
+						"type": "text"
+					},
+					{
+						"autogeneratePattern": "",
+						"help": "",
+						"hidden": false,
+						"id": "text494360628",
+						"max": 0,
+						"min": 0,
+						"name": "value",
+						"pattern": "",
+						"presentable": false,
+						"primaryKey": false,
+						"required": false,
+						"system": false,
+						"type": "text"
+					},
+					{
+						"hidden": false,
+						"id": "autodate2990389176",
+						"name": "created",
+						"onCreate": true,
+						"onUpdate": false,
+						"presentable": false,
+						"system": false,
+						"type": "autodate"
+					},
+					{
+						"hidden": false,
+						"id": "autodate3332085495",
+						"name": "updated",
+						"onCreate": true,
+						"onUpdate": true,
+						"presentable": false,
+						"system": false,
+						"type": "autodate"
+					}
+				],
+				"id": "pbc_2769025244",
+				"indexes": [],
+				"listRule": null,
+				"name": "settings",
+				"system": false,
+				"type": "base",
+				"updateRule": null,
+				"viewRule": null
+			},
+			{
+				"createRule": null,
+				"deleteRule": null,
+				"fields": [
+					{
+						"autogeneratePattern": "[a-z0-9]{15}",
+						"help": "",
+						"hidden": false,
+						"id": "text3208210256",
+						"max": 15,
+						"min": 15,
+						"name": "id",
+						"pattern": "^[a-z0-9]+$",
+						"presentable": false,
+						"primaryKey": true,
+						"required": true,
+						"system": true,
+						"type": "text"
+					},
+					{
+						"help": "",
+						"hidden": false,
+						"id": "select2363381545",
+						"maxSelect": 0,
+						"name": "type",
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "select",
+						"values": [
+							"import_folders"
+						]
+					},
+					{
+						"help": "",
+						"hidden": false,
+						"id": "select2063623452",
+						"maxSelect": 0,
+						"name": "status",
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "select",
+						"values": [
+							"queued",
+							"running",
+							"completed",
+							"failed"
+						]
+					},
+					{
+						"help": "",
+						"hidden": false,
+						"id": "number3257917790",
+						"max": null,
+						"min": null,
+						"name": "total",
+						"onlyInt": false,
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "number"
+					},
+					{
+						"help": "",
+						"hidden": false,
+						"id": "number670768011",
+						"max": null,
+						"min": null,
+						"name": "processed",
+						"onlyInt": false,
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "number"
+					},
+					{
+						"autogeneratePattern": "",
+						"help": "",
+						"hidden": false,
+						"id": "text3065852031",
+						"max": 0,
+						"min": 0,
+						"name": "message",
+						"pattern": "",
+						"presentable": false,
+						"primaryKey": false,
+						"required": false,
+						"system": false,
+						"type": "text"
+					},
+					{
+						"help": "",
+						"hidden": false,
+						"id": "json325763347",
+						"maxSize": 0,
+						"name": "result",
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "json"
+					},
+					{
+						"help": "",
+						"hidden": false,
+						"id": "date3029767898",
+						"max": "",
+						"min": "",
+						"name": "started",
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "date"
+					},
+					{
+						"help": "",
+						"hidden": false,
+						"id": "date2790239036",
+						"max": "",
+						"min": "",
+						"name": "finished",
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "date"
+					},
+					{
+						"hidden": false,
+						"id": "autodate2990389176",
+						"name": "created",
+						"onCreate": true,
+						"onUpdate": false,
+						"presentable": false,
+						"system": false,
+						"type": "autodate"
+					},
+					{
+						"hidden": false,
+						"id": "autodate3332085495",
+						"name": "updated",
+						"onCreate": true,
+						"onUpdate": true,
+						"presentable": false,
+						"system": false,
+						"type": "autodate"
+					}
+				],
+				"id": "pbc_2409499253",
+				"indexes": [],
+				"listRule": null,
+				"name": "jobs",
+				"system": false,
+				"type": "base",
+				"updateRule": null,
+				"viewRule": null
 			}
 		]`
 
