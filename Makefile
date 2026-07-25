@@ -1,3 +1,6 @@
+include myapp.env
+export
+
 BINARY := $(notdir $(CURDIR))
 APP := $(notdir $(CURDIR))
 # Ports used by the dev servers (frontend, backend, and PocketBase-style API)
@@ -9,6 +12,7 @@ init:
 	find . -depth \( -type f -o -type d \) -name '*myapp*' | while read -r f; do \
 		mv -- "$$f" "$$(dirname "$$f")/$$(basename "$$f" | sed 's/myapp/$(APP)/g')"; \
 	done
+    fastmod myapp $(APP)
 
 .PHONY: frontend-deps
 frontend-deps:
