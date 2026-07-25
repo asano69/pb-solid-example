@@ -19,7 +19,7 @@ build-frontend: frontend-deps
 	cd frontend && pnpm run build
 
 .PHONY: build
-build: build-frontend
+build: frontend
 	go build -o $(BINARY) ./cmd/$(BINARY)
 
 .PHONY: kill-ports
