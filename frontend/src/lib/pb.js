@@ -1,7 +1,7 @@
 import PocketBase from "pocketbase";
 
 // Single shared PocketBase client, used to call myapp' custom API routes
-// (e.g. POST /api/rescan) from the frontend.
+// (e.g. POST /api/admin/jobs/rescan) from the frontend.
 const pb = new PocketBase("/");
 
 export default pb;
