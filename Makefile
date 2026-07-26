@@ -74,6 +74,7 @@ test:
 
 lint:
 	golangci-lint run
+	cd frontend && pnpm run lint
 
 
 
