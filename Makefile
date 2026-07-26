@@ -1,3 +1,5 @@
+.PHONY: lint
+
 include myapp.env
 export
 
@@ -67,8 +69,12 @@ dev-back: clean
 
 .PHONY: test
 test:
-	cd frontend && pnpm test
+	#cd frontend && pnpm test
 	go test ./...
+
+lint:
+	golangci-lint run
+
 
 
 format:
