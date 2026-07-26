@@ -3,7 +3,7 @@ import { A } from "@solidjs/router";
 import pb from "../lib/pb";
 import Logo from "./Logo";
 
-export default function NavBar(props) {
+export default function NavBar() {
   const handleLogout = () => pb.authStore.clear();
 
   return (
