@@ -8,7 +8,6 @@ package serve
 
 import (
 	"fmt"
-	"io/fs"
 	"log/slog"
 
 	"github.com/asano69/myapp/internal/assets"
@@ -21,20 +20,14 @@ import (
 
 // Run registers all routes and starts listening.
 func Run(app *pocketbase.PocketBase, cfg *config.Config) error {
-
-	// assetsFS exposes just the "assets/" subdirectory that Vite's default
-	// (unprefixed) base writes hashed JS/CSS bundles into, so they're served
-	// at the conventional /assets/... URL instead of /static/assets/....
-	assetsFS, err := fs.Sub(assets.FS, "assets")
-	if err != nil {
-		return fmt.Errorf("sub assets fs: %w", err)
-	}
 	addr := fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port)
-
 	app.OnServe().BindFunc(func(e *core.ServeEvent) error {
-		e.Router.GET("/assets/{path...}", apis.Static(assetsFS, false))
-		e.Router.GET("/", serveShell)
-		e.Router.GET("/favicon.svg", serveFavicon)
+		// Serves the whole Vite build output (index.html, hashed JS/CSS
+		// under assets/, and public/ files like favicon.svg copied to the
+		// root) from a single route. indexFallback=true makes any unmatched
+		// path fall back to index.html, so client-side routing still works
+		// on a hard refresh.
+		e.Router.GET("/{path...}", apis.Static(assets.FS, true))
 		return e.Next()
 	})
 
