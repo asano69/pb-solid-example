@@ -14,7 +14,7 @@ all: kill-ports frontend## (*) Build frontend assets and start the server
 
 init:
 	fastmod --hidden myapp $(notdir $(CURDIR)) --glob '!Makefile'
-    fastmod --hidden MYAPP $(shell echo '$(notdir $(CURDIR))' | tr '[:lower:]' '[:upper:]') --glob '!Makefile'
+	fastmod --hidden MYAPP $(shell echo '$(notdir $(CURDIR))' | tr '[:lower:]' '[:upper:]') --glob '!Makefile'
 	find . -depth \( -type f -o -type d \) -name '*myapp*' | while read -r f; do \
 		mv -- "$$f" "$$(dirname "$$f")/$$(basename "$$f" | sed 's/myapp/$(notdir $(CURDIR))/g')"; \
 	done
