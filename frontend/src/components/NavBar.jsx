@@ -1,6 +1,7 @@
 import { createSignal } from "solid-js";
 import { A } from "@solidjs/router";
 import pb from "../lib/pb";
+import Logo from "./Logo";
 
 export default function NavBar(props) {
   const handleLogout = () => pb.authStore.clear();
