@@ -10,8 +10,8 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/asano69/myapp/internal/assets"
-	"github.com/asano69/myapp/internal/config"
+	"github.com/asano69/folio2/internal/config"
+	"github.com/asano69/folio2/internal/static"
 
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
@@ -27,7 +27,7 @@ func Run(app *pocketbase.PocketBase, cfg *config.Config) error {
 		// root) from a single route. indexFallback=true makes any unmatched
 		// path fall back to index.html, so client-side routing still works
 		// on a hard refresh.
-		e.Router.GET("/{path...}", apis.Static(assets.FS, true))
+		e.Router.GET("/{path...}", apis.Static(static.FS, true))
 		return e.Next()
 	})
 
