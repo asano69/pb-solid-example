@@ -6,6 +6,11 @@ BINARY := myapp
 # Ports used by the dev servers (frontend, backend, and PocketBase-style API)
 PORTS := 3000 3001
 
+.PHONY: all
+all: kill-ports frontend## (*) Build frontend assets and start the server
+	go run ./cmd/$(BINARY) superuser upsert admin@mail.internal password --dir=pb_data
+	go run ./cmd/$(BINARY) serve
+
 
 init:
 	fastmod --hidden myapp $(notdir $(CURDIR)) --glob '!Makefile'
