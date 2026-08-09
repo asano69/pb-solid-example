@@ -1,10 +1,4 @@
-import NavBar from "../components/NavBar";
-import pb from "../lib/pb";
-
+// NavBar now renders once in AppShell (see lib/router.jsx), not per route.
 export default function Home() {
-  return (
-    <div class="mx-auto flex min-h-screen w-full max-w-xl flex-col items-center bg-[var(--color-bg)] px-6 py-12 text-[var(--color-text)]">
-      <NavBar />
-    </div>
-  );
+  return <div />;
 }

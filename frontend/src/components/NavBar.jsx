@@ -1,5 +1,3 @@
-import { createSignal } from "solid-js";
-import { A } from "@solidjs/router";
 import pb from "../lib/pb";
 import Logo from "./Logo";
 
@@ -10,12 +8,6 @@ export default function NavBar() {
     <div class="mb-10 flex w-full flex-wrap items-center justify-between gap-y-3">
       <Logo linkable />
       <nav class="flex flex-wrap items-center gap-3">
-        <A href="/stats" class="btn">
-          Stats
-        </A>
-        <A href="/settings" class="btn">
-          Settings
-        </A>
         <button type="button" class="btn" onClick={handleLogout}>
           Log out
         </button>
