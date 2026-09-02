@@ -34,7 +34,6 @@ export default function Diary() {
 }
 
 async function fetchEntryForDate(date) {
-  s;
   try {
     return await pb
       .collection("diary_entries")
