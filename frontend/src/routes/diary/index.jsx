@@ -5,7 +5,6 @@ import { todayDate } from "../../lib/date";
 import Loading from "../../components/Loading";
 import DateNav from "../../components/common/DateNav";
 import TextEditor from "../../components/editor/TextEditor";
-import TagSelect from "../../components/diary/TagSelect";
 
 // Diary is a single rich-text entry per day, keyed by date only. The
 // actual editor UI (toolbar + ProseKit setup) lives in
@@ -28,7 +27,6 @@ export default function Diary() {
           date={selectedDate()}
           entryId={entry()?.id}
           initialContent={entry()?.note}
-          initialTags={entry()?.expand?.tags ?? []}
         />
       </Show>
     </div>
@@ -36,15 +34,11 @@ export default function Diary() {
 }
 
 async function fetchEntryForDate(date) {
+  s;
   try {
-    // expand: "tags" resolves the tags relation to full diary_tags
-    // records, which is what TagSelect's value expects (see
-    // components/diary/TagSelect.jsx).
     return await pb
       .collection("diary_entries")
-      .getFirstListItem(pb.filter("date = {:date}", { date }), {
-        expand: "tags",
-      });
+      .getFirstListItem(pb.filter("date = {:date}", { date }));
   } catch {
     // No entry for this date yet; the form starts blank.
     return null;
@@ -65,9 +59,7 @@ function DiaryForm(props) {
   // props.entryId updating.
   // eslint-disable-next-line solid/reactivity
   const [entryId, setEntryId] = createSignal(props.entryId);
-  // Selected tag records (not ids), matching what TagSelect's
-  // value/onChange work with. Converted to ids on save.
-  const [tags, setTags] = createSignal(props.initialTags ?? []);
+
   const [saving, setSaving] = createSignal(false);
   // Briefly true right after a successful save, to swap the save icon
   // for a checkmark; reverted by the timeout scheduled in handleSave.
@@ -88,7 +80,6 @@ function DiaryForm(props) {
       const data = {
         note: editor.getDocJSON(),
         date: props.date,
-        tags: tags().map((tag) => tag.id),
       };
       if (entryId()) {
         await pb.collection("diary_entries").update(entryId(), data);
@@ -116,7 +107,6 @@ function DiaryForm(props) {
       onSubmit={handleSave}
       class="flex min-h-0 flex-1 w-full flex-col gap-4 mb-20"
     >
-      <TagSelect value={tags()} onChange={setTags} />
       <TextEditor
         initialContent={props.initialContent}
         saving={saving()}
