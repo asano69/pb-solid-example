@@ -1,6 +1,7 @@
+// frontend/src/lib/pb.ts
 import PocketBase from "pocketbase";
 
-// Single shared PocketBase client, used to call myapp' custom API routes
+// Single shared PocketBase client, used to call custom API routes
 // (e.g. POST /api/admin/jobs/rescan) from the frontend.
 const pb = new PocketBase("/");
 
@@ -16,7 +17,7 @@ const pb = new PocketBase("/");
 // here triggers AuthGate's onChange listener and falls back to Login,
 // instead of leaving requests (e.g. Catalog's fetchManifests) stuck
 // rejected forever behind a "Loading…" screen.
-pb.afterSend = function (response, data) {
+pb.afterSend = function (response: Response, data: unknown) {
   if (response.status === 401 || response.status === 403) {
     pb.authStore.clear();
   }

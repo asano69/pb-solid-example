@@ -885,7 +885,9 @@ func init() {
 					}
 				],
 				"id": "pbc_2769025244",
-				"indexes": [],
+				"indexes": [
+					"CREATE UNIQUE INDEX ` + "`" + `idx_oqsw10cqxf` + "`" + ` ON ` + "`" + `settings` + "`" + ` (` + "`" + `key` + "`" + `)"
+				],
 				"listRule": null,
 				"name": "settings",
 				"system": false,
@@ -913,111 +915,47 @@ func init() {
 						"type": "text"
 					},
 					{
+						"autogeneratePattern": "",
 						"help": "",
 						"hidden": false,
-						"id": "select2363381545",
-						"maxSelect": 0,
-						"name": "type",
+						"id": "text2862495610",
+						"max": 0,
+						"min": 0,
+						"name": "date",
+						"pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$",
 						"presentable": false,
-						"required": false,
+						"primaryKey": false,
+						"required": true,
 						"system": false,
-						"type": "select",
-						"values": [
-							"import_folders"
-						]
-					},
-					{
-						"help": "",
-						"hidden": false,
-						"id": "select2063623452",
-						"maxSelect": 0,
-						"name": "status",
-						"presentable": false,
-						"required": false,
-						"system": false,
-						"type": "select",
-						"values": [
-							"queued",
-							"running",
-							"completed",
-							"failed"
-						]
-					},
-					{
-						"help": "",
-						"hidden": false,
-						"id": "number3257917790",
-						"max": null,
-						"min": null,
-						"name": "total",
-						"onlyInt": false,
-						"presentable": false,
-						"required": false,
-						"system": false,
-						"type": "number"
-					},
-					{
-						"help": "",
-						"hidden": false,
-						"id": "number670768011",
-						"max": null,
-						"min": null,
-						"name": "processed",
-						"onlyInt": false,
-						"presentable": false,
-						"required": false,
-						"system": false,
-						"type": "number"
+						"type": "text"
 					},
 					{
 						"autogeneratePattern": "",
 						"help": "",
 						"hidden": false,
-						"id": "text3065852031",
+						"id": "text1872009285",
 						"max": 0,
 						"min": 0,
-						"name": "message",
-						"pattern": "",
+						"name": "time",
+						"pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
 						"presentable": false,
 						"primaryKey": false,
-						"required": false,
+						"required": true,
 						"system": false,
 						"type": "text"
 					},
 					{
 						"help": "",
 						"hidden": false,
-						"id": "json325763347",
-						"maxSize": 0,
-						"name": "result",
+						"id": "number2324565011",
+						"max": 4,
+						"min": 1,
+						"name": "satisfaction",
+						"onlyInt": false,
 						"presentable": false,
 						"required": false,
 						"system": false,
-						"type": "json"
-					},
-					{
-						"help": "",
-						"hidden": false,
-						"id": "date3029767898",
-						"max": "",
-						"min": "",
-						"name": "started",
-						"presentable": false,
-						"required": false,
-						"system": false,
-						"type": "date"
-					},
-					{
-						"help": "",
-						"hidden": false,
-						"id": "date2790239036",
-						"max": "",
-						"min": "",
-						"name": "finished",
-						"presentable": false,
-						"required": false,
-						"system": false,
-						"type": "date"
+						"type": "number"
 					},
 					{
 						"hidden": false,
@@ -1040,10 +978,269 @@ func init() {
 						"type": "autodate"
 					}
 				],
-				"id": "pbc_2409499253",
+				"id": "pbc_2604438987",
+				"indexes": [
+					"CREATE UNIQUE INDEX ` + "`" + `idx_7xr4q4hao5` + "`" + ` ON ` + "`" + `sleep_logs` + "`" + ` (` + "`" + `date` + "`" + `)"
+				],
+				"listRule": null,
+				"name": "sleep_logs",
+				"system": false,
+				"type": "base",
+				"updateRule": null,
+				"viewRule": null
+			},
+			{
+				"createRule": null,
+				"deleteRule": null,
+				"fields": [
+					{
+						"autogeneratePattern": "[a-z0-9]{15}",
+						"help": "",
+						"hidden": false,
+						"id": "text3208210256",
+						"max": 15,
+						"min": 15,
+						"name": "id",
+						"pattern": "^[a-z0-9]+$",
+						"presentable": false,
+						"primaryKey": true,
+						"required": true,
+						"system": true,
+						"type": "text"
+					},
+					{
+						"autogeneratePattern": "",
+						"help": "",
+						"hidden": false,
+						"id": "text2862495610",
+						"max": 0,
+						"min": 0,
+						"name": "date",
+						"pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$",
+						"presentable": false,
+						"primaryKey": false,
+						"required": true,
+						"system": false,
+						"type": "text"
+					},
+					{
+						"autogeneratePattern": "",
+						"help": "",
+						"hidden": false,
+						"id": "text724990059",
+						"max": 0,
+						"min": 0,
+						"name": "title",
+						"pattern": "",
+						"presentable": false,
+						"primaryKey": false,
+						"required": false,
+						"system": false,
+						"type": "text"
+					},
+					{
+						"help": "",
+						"hidden": false,
+						"id": "bool271442091",
+						"name": "done",
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "bool"
+					},
+					{
+						"help": "",
+						"hidden": false,
+						"id": "number1177347317",
+						"max": null,
+						"min": null,
+						"name": "position",
+						"onlyInt": false,
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "number"
+					},
+					{
+						"hidden": false,
+						"id": "autodate2990389176",
+						"name": "created",
+						"onCreate": true,
+						"onUpdate": false,
+						"presentable": false,
+						"system": false,
+						"type": "autodate"
+					},
+					{
+						"hidden": false,
+						"id": "autodate3332085495",
+						"name": "updated",
+						"onCreate": true,
+						"onUpdate": true,
+						"presentable": false,
+						"system": false,
+						"type": "autodate"
+					}
+				],
+				"id": "pbc_881283477",
 				"indexes": [],
 				"listRule": null,
-				"name": "jobs",
+				"name": "focus_tasks",
+				"system": false,
+				"type": "base",
+				"updateRule": null,
+				"viewRule": null
+			},
+			{
+				"createRule": null,
+				"deleteRule": null,
+				"fields": [
+					{
+						"autogeneratePattern": "[a-z0-9]{15}",
+						"help": "",
+						"hidden": false,
+						"id": "text3208210256",
+						"max": 15,
+						"min": 15,
+						"name": "id",
+						"pattern": "^[a-z0-9]+$",
+						"presentable": false,
+						"primaryKey": true,
+						"required": true,
+						"system": true,
+						"type": "text"
+					},
+					{
+						"autogeneratePattern": "",
+						"help": "",
+						"hidden": false,
+						"id": "text2862495610",
+						"max": 0,
+						"min": 0,
+						"name": "date",
+						"pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$",
+						"presentable": false,
+						"primaryKey": false,
+						"required": true,
+						"system": false,
+						"type": "text"
+					},
+					{
+						"help": "",
+						"hidden": false,
+						"id": "json3485334036",
+						"maxSize": 0,
+						"name": "note",
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "json"
+					},
+					{
+						"cascadeDelete": false,
+						"collectionId": "pbc_2329339165",
+						"help": "",
+						"hidden": false,
+						"id": "relation1874629670",
+						"maxSelect": 10,
+						"minSelect": 0,
+						"name": "tags",
+						"presentable": false,
+						"required": false,
+						"system": false,
+						"type": "relation"
+					},
+					{
+						"hidden": false,
+						"id": "autodate2990389176",
+						"name": "created",
+						"onCreate": true,
+						"onUpdate": false,
+						"presentable": false,
+						"system": false,
+						"type": "autodate"
+					},
+					{
+						"hidden": false,
+						"id": "autodate3332085495",
+						"name": "updated",
+						"onCreate": true,
+						"onUpdate": true,
+						"presentable": false,
+						"system": false,
+						"type": "autodate"
+					}
+				],
+				"id": "pbc_2659547552",
+				"indexes": [
+					"CREATE UNIQUE INDEX ` + "`" + `idx_wdwfwf1a0p` + "`" + ` ON ` + "`" + `diary_entries` + "`" + ` (` + "`" + `date` + "`" + `)"
+				],
+				"listRule": null,
+				"name": "diary_entries",
+				"system": false,
+				"type": "base",
+				"updateRule": null,
+				"viewRule": null
+			},
+			{
+				"createRule": null,
+				"deleteRule": null,
+				"fields": [
+					{
+						"autogeneratePattern": "[a-z0-9]{15}",
+						"help": "",
+						"hidden": false,
+						"id": "text3208210256",
+						"max": 15,
+						"min": 15,
+						"name": "id",
+						"pattern": "^[a-z0-9]+$",
+						"presentable": false,
+						"primaryKey": true,
+						"required": true,
+						"system": true,
+						"type": "text"
+					},
+					{
+						"autogeneratePattern": "",
+						"help": "",
+						"hidden": false,
+						"id": "text245846248",
+						"max": 0,
+						"min": 0,
+						"name": "label",
+						"pattern": "",
+						"presentable": false,
+						"primaryKey": false,
+						"required": true,
+						"system": false,
+						"type": "text"
+					},
+					{
+						"hidden": false,
+						"id": "autodate2990389176",
+						"name": "created",
+						"onCreate": true,
+						"onUpdate": false,
+						"presentable": false,
+						"system": false,
+						"type": "autodate"
+					},
+					{
+						"hidden": false,
+						"id": "autodate3332085495",
+						"name": "updated",
+						"onCreate": true,
+						"onUpdate": true,
+						"presentable": false,
+						"system": false,
+						"type": "autodate"
+					}
+				],
+				"id": "pbc_2329339165",
+				"indexes": [],
+				"listRule": null,
+				"name": "diary_tags",
 				"system": false,
 				"type": "base",
 				"updateRule": null,
