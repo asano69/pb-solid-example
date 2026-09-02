@@ -1,9 +1,7 @@
 import { createSignal, createEffect } from "solid-js";
 import { Dialog } from "@kobalte/core/dialog";
 import { Combobox } from "@kobalte/core/combobox";
-import X from "lucide-solid/icons/x";
-import Check from "lucide-solid/icons/check";
-import ChevronDown from "lucide-solid/icons/chevron-down";
+import { X, Check, ChevronDown } from "../../lib/icons";
 
 // Reusable single-field "pick one from a list" dialog: a label, a
 // searchable combobox, and Cancel/Save buttons. Mirrors PromptDialog's

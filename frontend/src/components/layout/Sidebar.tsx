@@ -1,9 +1,7 @@
 import { For, Show } from "solid-js";
 import { A } from "@solidjs/router";
 
-import Focus from "lucide-solid/icons/cone";
-import Notebook from "lucide-solid/icons/notebook";
-import Network from "lucide-solid/icons/network";
+import { Cone as Focus, Notebook, Network } from "../../lib/icons";
 
 import { useVersion } from "../../lib/version";
 

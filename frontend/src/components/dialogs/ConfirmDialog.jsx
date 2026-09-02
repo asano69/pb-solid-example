@@ -1,7 +1,6 @@
 import { createSignal } from "solid-js";
 import { AlertDialog } from "@kobalte/core/alert-dialog";
-import X from "lucide-solid/icons/x";
-import Check from "lucide-solid/icons/check";
+import { X, Check } from "../../lib/icons";
 
 // Reusable "are you sure?" confirmation dialog. Fully controlled via
 // `open`/`onOpenChange` so it can be opened from anywhere (e.g. a

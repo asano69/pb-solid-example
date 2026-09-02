@@ -1,11 +1,13 @@
 import { For, Show } from "solid-js";
-import Undo2 from "lucide-solid/icons/undo-2";
-import Redo2 from "lucide-solid/icons/redo-2";
-import Bold from "lucide-solid/icons/bold";
-import Italic from "lucide-solid/icons/italic";
-import UnderlineIcon from "lucide-solid/icons/underline";
-import Strikethrough from "lucide-solid/icons/strikethrough";
-import List from "lucide-solid/icons/list";
+import {
+  Undo2,
+  Redo2,
+  Bold,
+  Italic,
+  Underline as UnderlineIcon,
+  Strikethrough,
+  List,
+} from "../../lib/icons";
 import { useEditorDerivedValue } from "prosekit/solid";
 
 interface ToolbarButton {

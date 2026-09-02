@@ -1,8 +1,7 @@
 import { createSignal, createEffect } from "solid-js";
 import { Dialog } from "@kobalte/core/dialog";
 import { TextField } from "@kobalte/core/text-field";
-import X from "lucide-solid/icons/x";
-import Check from "lucide-solid/icons/check";
+import { X, Check } from "../../lib/icons";
 
 // Reusable single-field "edit" dialog: a label, a text field, and an
 // inline checkmark button to save (mirrors ComboboxDialog's layout, no

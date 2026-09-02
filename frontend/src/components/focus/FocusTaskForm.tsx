@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 import { TextField } from "@kobalte/core/text-field";
-import Plus from "lucide-solid/icons/plus";
+import { Plus } from "../../lib/icons";
 
 import pb from "../../lib/pb";
 

@@ -1,6 +1,5 @@
 import { Show } from "solid-js";
-import Menu from "lucide-solid/icons/menu";
-import X from "lucide-solid/icons/x";
+import { Menu, X } from "../../lib/icons";
 import Logo from "../Logo";
 
 import ThemeToggle from "./ThemeToggle";

@@ -1,10 +1,7 @@
 import { For, Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { DropdownMenu } from "@kobalte/core/dropdown-menu";
-import Sun from "lucide-solid/icons/sun";
-import Moon from "lucide-solid/icons/moon";
-import SunMoon from "lucide-solid/icons/sun-moon";
-import Check from "lucide-solid/icons/check";
+import { Sun, Moon, SunMoon, Check } from "../../lib/icons";
 import { currentTheme, setTheme, type Theme } from "../../lib/theme";
 
 interface ThemeOption {

@@ -1,7 +1,6 @@
 // frontend/src/components/layout/UserMenu.tsx
-import EllipsisVertical from "lucide-solid/icons/ellipsis-vertical";
-import LogOut from "lucide-solid/icons/log-out";
 import { DropdownMenu } from "@kobalte/core/dropdown-menu";
+import { EllipsisVertical, LogOut } from "../../lib/icons";
 import pb from "../../lib/pb";
 
 // Dropdown menu in the top-right corner, currently holding just logout.

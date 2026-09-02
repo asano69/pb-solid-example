@@ -1,5 +1,7 @@
-import ChevronLeft from "lucide-solid/icons/chevrons-left";
-import ChevronRight from "lucide-solid/icons/chevrons-right";
+import {
+  ChevronsLeft as ChevronLeft,
+  ChevronsRight as ChevronRight,
+} from "../../lib/icons";
 
 import {
   dayOfWeek,

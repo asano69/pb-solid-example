@@ -1,10 +1,12 @@
 import { createSignal, Show } from "solid-js";
 import { TextField } from "@kobalte/core/text-field";
 import { ToggleButton } from "@kobalte/core/toggle-button";
-import CircleCheckBig from "lucide-solid/icons/circle-check-big";
-import Circle from "lucide-solid/icons/circle";
-import Trash2 from "lucide-solid/icons/trash-2";
-import GripVertical from "lucide-solid/icons/grip-vertical";
+import {
+  CircleCheckBig,
+  Circle,
+  Trash2,
+  GripVertical,
+} from "../../lib/icons";
 
 import pb from "../../lib/pb";
 import { playCompletionSound } from "../../lib/completionSound";
