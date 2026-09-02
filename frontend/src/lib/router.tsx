@@ -5,7 +5,6 @@ import AppShell from "../components/layout/AppShell";
 
 import Focus from "../routes/focus";
 import Diary from "../routes/diary";
-import Graph from "../routes/graph";
 
 // All top-level routes in one place, so adding or removing a page never
 // requires touching main.jsx.
@@ -22,7 +21,6 @@ export default function AppRouter() {
 
       <Route path="/focus" component={Focus} />
       <Route path="/diary" component={Diary} />
-      <Route path="/graph" component={Graph} />
     </Router>
   );
 }
