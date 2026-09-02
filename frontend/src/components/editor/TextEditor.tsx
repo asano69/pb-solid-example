@@ -8,6 +8,15 @@ import { ProseKit } from "prosekit/solid";
 import EditorToolbar from "./EditorToolbar";
 import EditorSaveButton from "./EditorSaveButton";
 
+export interface TextEditorProps {
+  // Opaque ProseKit document JSON, passed straight through to
+  // createEditor/editor.getDocJSON() without further typing here.
+  initialContent?: any;
+  saving: boolean;
+  justSaved: boolean;
+  onReady?: (editor: ReturnType<typeof createEditor>) => void;
+}
+
 // Reusable rich-text editor: a ProseKit editor with a formatting toolbar
 // (undo/redo, bold/italic/underline/strike), an editable content area,
 // and a save button below the content.
@@ -17,9 +26,7 @@ import EditorSaveButton from "./EditorSaveButton";
 // has no idea what "save" means for the caller. See
 // routes/diary/index.jsx for an example of a <form> wrapping this and
 // driving `saving`/`justSaved`.
-//
-// Props: initialContent, saving, justSaved, onReady (editor) => void.
-export default function TextEditor(props) {
+export default function TextEditor(props: TextEditorProps) {
   const editor = createEditor({
     extension: defineBasicExtension(),
     defaultContent: props.initialContent,
@@ -33,9 +40,11 @@ export default function TextEditor(props) {
   // Solid doesn't auto-unmount ref callbacks the way React's new
   // ref-cleanup convention does, so the returned unmount function is
   // wired to onCleanup explicitly here.
-  const mountEditor = (el) => {
+  const mountEditor = (el: HTMLDivElement) => {
     const unmount = editor.mount(el);
-    onCleanup(() => unmount?.());
+    onCleanup(() => {
+      if (typeof unmount === "function") unmount();
+    });
   };
 
   return (
