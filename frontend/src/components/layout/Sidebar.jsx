@@ -1,7 +1,6 @@
 import { For, Show } from "solid-js";
 import { A } from "@solidjs/router";
 
-
 import Focus from "lucide-solid/icons/cone";
 import Notebook from "lucide-solid/icons/notebook";
 import Network from "lucide-solid/icons/network";
@@ -12,10 +11,9 @@ import { useVersion } from "../../lib/version";
 // data so each entry is just a {href, label, icon} tuple instead of
 // duplicating the same <A> markup per page.
 const NAV_ITEMS = [
-
+  { href: "/graph", label: "Graph", icon: Network },
   { href: "/focus", label: "Focus", icon: Focus },
   { href: "/diary", label: "Diary", icon: Notebook },
-  { href: "/graph", label: "Graph", icon: Network },
 ];
 
 export default function Sidebar(props) {

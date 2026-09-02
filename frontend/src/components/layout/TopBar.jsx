@@ -2,7 +2,7 @@ import { Show } from "solid-js";
 import Menu from "lucide-solid/icons/menu";
 import X from "lucide-solid/icons/x";
 import Logo from "../Logo";
-import PinkNoiseToggle from "./PinkNoiseToggle";
+
 import ThemeToggle from "./ThemeToggle";
 import UserMenu from "./UserMenu";
 
@@ -33,7 +33,6 @@ export default function TopBar(props) {
         </div>
 
         <nav class="flex items-center gap-1">
-          <PinkNoiseToggle />
           <ThemeToggle />
           <UserMenu />
         </nav>
