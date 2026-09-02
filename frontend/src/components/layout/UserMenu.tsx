@@ -1,3 +1,4 @@
+// frontend/src/components/layout/UserMenu.tsx
 import EllipsisVertical from "lucide-solid/icons/ellipsis-vertical";
 import LogOut from "lucide-solid/icons/log-out";
 import { DropdownMenu } from "@kobalte/core/dropdown-menu";

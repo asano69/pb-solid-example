@@ -7,16 +7,28 @@ import Network from "lucide-solid/icons/network";
 
 import { useVersion } from "../../lib/version";
 
+interface NavItem {
+  href: string;
+  label: string;
+  icon: typeof Focus;
+}
+
 // Static top-level nav items, in the order they're shown. Kept as plain
 // data so each entry is just a {href, label, icon} tuple instead of
 // duplicating the same <A> markup per page.
-const NAV_ITEMS = [
+const NAV_ITEMS: NavItem[] = [
   { href: "/graph", label: "Graph", icon: Network },
   { href: "/focus", label: "Focus", icon: Focus },
   { href: "/diary", label: "Diary", icon: Notebook },
 ];
 
-export default function Sidebar(props) {
+export interface SidebarProps {
+  isMobile: boolean;
+  open: boolean;
+  onClose: () => void;
+}
+
+export default function Sidebar(props: SidebarProps) {
   const version = useVersion();
 
   return (
@@ -70,7 +82,7 @@ export default function Sidebar(props) {
 
         {/* mt-auto pins this to the bottom of the sidebar regardless of
             how tall the nav list above ends up being. */}
-        <footer class="mt-auto  p-2  text-border font-mono text-xs">
+        <footer class="mt-auto p-2 text-border font-mono text-xs">
           <Show when={version()}>v{version()}</Show>
         </footer>
       </aside>

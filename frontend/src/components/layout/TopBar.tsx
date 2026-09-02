@@ -6,12 +6,18 @@ import Logo from "../Logo";
 import ThemeToggle from "./ThemeToggle";
 import UserMenu from "./UserMenu";
 
+export interface TopBarProps {
+  isMobile: boolean;
+  sidebarOpen: boolean;
+  onToggleSidebar: () => void;
+}
+
 // The hamburger button here only toggles the Sidebar (owned by
 // MainLayout, passed in as sidebarOpen/onToggleSidebar). There is no
 // separate mobile-only menu anymore.
-export default function TopBar(props) {
+export default function TopBar(props: TopBarProps) {
   return (
-    <header class="sticky top-0 z-40 p-2  border-b border-border bg-nav">
+    <header class="sticky top-0 z-40 p-2 border-b border-border bg-nav">
       <div class="flex justify-between px-2 md:px-8">
         <div class="flex items-center gap-3">
           {/* Toggle button only exists on mobile; on desktop the

@@ -1,9 +1,9 @@
-import { createSignal } from "solid-js";
+import { createSignal, type ParentProps } from "solid-js";
 import TopBar from "./TopBar";
 import Sidebar from "./Sidebar";
 import { createIsMobile } from "../../lib/mediaQuery";
 
-export default function MainLayout(props) {
+export default function MainLayout(props: ParentProps) {
   // Whether the viewport is currently mobile-sized. Drives both the
   // toggle button's visibility (TopBar) and the sidebar's overlay vs.
   // always-visible behavior (Sidebar).
