@@ -1,4 +1,5 @@
 import { createSignal, onCleanup, Show, createResource } from "solid-js";
+import type { createEditor } from "prosekit/core";
 
 import pb from "../../lib/pb";
 import { todayDate } from "../../lib/date";
@@ -6,9 +7,33 @@ import Loading from "../../components/Loading";
 import DateNav from "../../components/common/DateNav";
 import TextEditor from "../../components/editor/TextEditor";
 
+// Matches the PocketBase "diary_entries" collection schema.
+export interface DiaryEntryRecord {
+  id: string;
+  date: string; // "YYYY-MM-DD"
+  note: unknown; // Opaque ProseKit document JSON, see TextEditor.
+  created: string;
+  updated: string;
+}
+
+async function fetchEntryForDate(
+  date: string,
+): Promise<DiaryEntryRecord | null> {
+  try {
+    return await pb
+      .collection("diary_entries")
+      .getFirstListItem<DiaryEntryRecord>(
+        pb.filter("date = {:date}", { date }),
+      );
+  } catch {
+    // No entry for this date yet; the form starts blank.
+    return null;
+  }
+}
+
 // Diary is a single rich-text entry per day, keyed by date only. The
 // actual editor UI (toolbar + ProseKit setup) lives in
-// components/editor/TextEditor.jsx; this page only owns the
+// components/editor/TextEditor.tsx; this page only owns the
 // date-selection and save-to-PocketBase logic.
 export default function Diary() {
   // The day currently being viewed/edited, navigated via DateNav below.
@@ -33,15 +58,10 @@ export default function Diary() {
   );
 }
 
-async function fetchEntryForDate(date) {
-  try {
-    return await pb
-      .collection("diary_entries")
-      .getFirstListItem(pb.filter("date = {:date}", { date }));
-  } catch {
-    // No entry for this date yet; the form starts blank.
-    return null;
-  }
+interface DiaryFormProps {
+  date: string;
+  entryId?: string;
+  initialContent?: unknown;
 }
 
 // Split out from Diary so a fresh editor is created every time the form
@@ -49,7 +69,7 @@ async function fetchEntryForDate(date) {
 // loading, right after a delete triggers a refetch, or after DateNav
 // switches to a different day (see onDeleted, and Diary's
 // createResource above).
-function DiaryForm(props) {
+function DiaryForm(props: DiaryFormProps) {
   // Tracks the entry's id locally: unset until the first save, at
   // which point it switches from create to update for any further
   // save today without needing a page reload.
@@ -64,14 +84,14 @@ function DiaryForm(props) {
   // for a checkmark; reverted by the timeout scheduled in handleSave.
   const [justSaved, setJustSaved] = createSignal(false);
   const [error, setError] = createSignal("");
-  let savedTimeout;
+  let savedTimeout: ReturnType<typeof setTimeout>;
   onCleanup(() => clearTimeout(savedTimeout));
 
   // Set by TextEditor's onReady once its ProseKit editor is created, so
   // handleSave can read the current content via editor.getDocJSON().
-  let editor;
+  let editor: ReturnType<typeof createEditor>;
 
-  const handleSave = async (e) => {
+  const handleSave = async (e: SubmitEvent) => {
     e.preventDefault();
     setError("");
     setSaving(true);
@@ -81,9 +101,11 @@ function DiaryForm(props) {
         date: props.date,
       };
       if (entryId()) {
-        await pb.collection("diary_entries").update(entryId(), data);
+        await pb.collection("diary_entries").update(entryId()!, data);
       } else {
-        const record = await pb.collection("diary_entries").create(data);
+        const record = await pb
+          .collection("diary_entries")
+          .create<DiaryEntryRecord>(data);
         setEntryId(record.id);
       }
       // Show a checkmark in place of the save icon for a moment to
