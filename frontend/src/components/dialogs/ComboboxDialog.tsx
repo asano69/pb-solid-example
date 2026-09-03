@@ -9,7 +9,6 @@ export interface ComboboxDialogProps<T extends Record<string, unknown>> {
   title: string;
   label: string;
   options: T[];
-  // Field names read off each option (see Combobox.Item below).
   optionValue: keyof T & string;
   optionLabel: keyof T & string;
   placeholder?: string;
@@ -20,10 +19,6 @@ export interface ComboboxDialogProps<T extends Record<string, unknown>> {
   errorMessage?: string;
 }
 
-// Reusable single-field "pick one from a list" dialog: a label, a
-// searchable combobox, and Cancel/Save buttons. Mirrors PromptDialog's
-// API (open/onOpenChange/onSubmit) so the two dialogs can be swapped
-// for each other wherever a single-field form is needed.
 export default function ComboboxDialog<T extends Record<string, unknown>>(
   props: ComboboxDialogProps<T>,
 ) {
@@ -31,12 +26,13 @@ export default function ComboboxDialog<T extends Record<string, unknown>>(
   const [submitting, setSubmitting] = createSignal(false);
   const [error, setError] = createSignal("");
 
-  // This component stays mounted across opens/closes (only its Dialog
-  // content mounts/unmounts internally), so the selection has to be
-  // reset explicitly every time it opens.
   createEffect(() => {
     if (props.open) {
-      setValue(props.initialValue ?? null);
+      // Wrapped in a function form: T could in principle overlap with
+      // Solid's "updater function" overload from the setter's point of
+      // view, so passing the value directly trips its overload
+      // resolution. The functional form (prev) => value sidesteps that.
+      setValue(() => props.initialValue ?? null);
       setError("");
     }
   });
@@ -80,9 +76,6 @@ export default function ComboboxDialog<T extends Record<string, unknown>>(
               </Dialog.CloseButton>
             </div>
             <form onSubmit={handleSubmit} class="flex flex-col gap-4">
-              {/* Combobox and confirm button share one row: no separate
-                  full-width "Save" button anymore, just a check icon
-                  button right next to the combobox. */}
               <div class="flex items-end gap-2">
                 <Combobox<T>
                   options={props.options}
