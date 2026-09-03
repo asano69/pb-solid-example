@@ -20,7 +20,7 @@ function applyTheme(theme: Theme) {
   document.documentElement.classList.toggle("dark", theme === "dark");
 }
 
-// Module-level signal, applied immediately on import (see main.jsx) so
+// Module-level signal, applied immediately on import (see main.tsx) so
 // the correct theme is set before the first paint, not just once
 // ThemeToggle happens to mount.
 const [theme, setThemeSignal] = createSignal<Theme>(readStoredTheme());

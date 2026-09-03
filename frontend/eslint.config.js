@@ -9,11 +9,11 @@ export default [
   js.configs.recommended,
   solid,
   {
-    files: ["src/**/*.{js,jsx}"],
+    files: ["src/**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
       globals: {
         ...globals.browser,
-        // Injected by vite.config.js's `define`; a build-time string
+        // Injected by vite.config.ts's `define`; a build-time string
         // replacement, not a real runtime global.
         __APP_NAME__: "readonly",
       },
@@ -23,7 +23,7 @@ export default [
     },
   },
   {
-    // Root-level config files (vite.config.js, etc.) run under Node,
+    // Root-level config files (vite.config.ts, etc.) run under Node,
     // not the browser, so they need Node globals like `process`.
     files: ["*.config.js"],
     languageOptions: {

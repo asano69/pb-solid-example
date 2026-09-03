@@ -19,7 +19,7 @@
 
   /* ProseKit ships without a UI, so the toolbar and editable area are
    * styled here instead of a vendor/ override file. ProseKit's own
-   * prosekit/basic/style.css (imported in Editor.jsx) handles the
+   * prosekit/basic/style.css (imported in Editor.tsx) handles the
    * inner typography and targets the "ProseMirror" class, which is why
    * that class is applied directly to notes-editor-content below. */
   .notes-editor {

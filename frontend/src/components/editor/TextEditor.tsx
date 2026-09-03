@@ -24,7 +24,7 @@ export interface TextEditorProps {
 // `editor` instance via onReady so it can read the content (e.g.
 // editor.getDocJSON()) and wire up its own save logic -- this component
 // has no idea what "save" means for the caller. See
-// routes/diary/index.jsx for an example of a <form> wrapping this and
+// routes/diary/index.tsx for an example of a <form> wrapping this and
 // driving `saving`/`justSaved`.
 export default function TextEditor(props: TextEditorProps) {
   const editor = createEditor({
