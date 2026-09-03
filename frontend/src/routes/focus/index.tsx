@@ -162,7 +162,7 @@ export default function Focus() {
   });
 
   return (
-    <div class="flex w-full flex-col gap-4 xl:mx-auto xl:max-w-3xl">
+    <div class="flex w-full flex-col gap-4">
       <DateNav date={selectedDate()} onChange={handleDateChange} />
       <h1 class="mb-4 font-sans text-4xl">Focus</h1>
 
