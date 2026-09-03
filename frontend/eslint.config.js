@@ -11,6 +11,10 @@ export default [
   {
     files: ["src/**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
+      // espree (ESLint's default parser) can't parse TypeScript syntax
+      // (interface, type annotations, etc.), so every .ts/.tsx source
+      // file needs the TS parser here too, not just *.config.ts below.
+      parser: tsParser,
       globals: {
         ...globals.browser,
         // Injected by vite.config.ts's `define`; a build-time string
@@ -20,6 +24,16 @@ export default [
       parserOptions: {
         ecmaFeatures: { jsx: true },
       },
+    },
+    rules: {
+      // Base no-unused-vars doesn't understand TS-only syntax (interface/type
+      // function signatures, ambient `declare const`, etc.): its scope
+      // analysis misreads type-level parameter and declaration names as
+      // unused variables. Fixing this properly needs
+      // @typescript-eslint/eslint-plugin's own no-unused-vars, which isn't
+      // installed here, so the unreliable base rule is just switched off
+      // for TS/TSX files.
+      "no-unused-vars": "off",
     },
   },
   {

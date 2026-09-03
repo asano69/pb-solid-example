@@ -115,7 +115,7 @@ export default function FocusTaskItem(props: FocusTaskItemProps) {
           type="button"
           aria-label="Drag to reorder"
           class="icon-btn  shrink-0 cursor-grab touch-none active:cursor-grabbing"
-          onPointerDown={props.onDragStart}
+          onPointerDown={(e) => props.onDragStart(e)}
         >
           <GripVertical size={15} />
         </button>

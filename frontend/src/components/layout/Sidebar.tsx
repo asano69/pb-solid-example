@@ -1,7 +1,7 @@
 import { For, Show } from "solid-js";
 import { A } from "@solidjs/router";
 
-import { Cone as Focus, Notebook, Network } from "../../lib/icons";
+import { Cone as Focus, Notebook } from "../../lib/icons";
 
 import { useVersion } from "../../lib/version";
 
