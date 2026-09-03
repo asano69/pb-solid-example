@@ -12,7 +12,7 @@
 - Backendは、GoとPocketBase v0.39+を使い、frontendは、solid.js + tailwind v4を使います。
 - このアプリは、SPA＋CSRの個人向けのアプリです。
 
-## Useage
+## Uses
 
 ## Tech Stack
 ### backend
