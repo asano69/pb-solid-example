@@ -4,7 +4,7 @@ import type { createEditor } from "prosekit/core";
 import pb from "../../lib/pb";
 import { todayDate } from "../../lib/date";
 import Loading from "../../components/Loading";
-import DateNav from "../../components/common/DateNav";
+import DateNav from "../../components/DateNav";
 import TextEditor from "../../components/editor/TextEditor";
 
 // Matches the PocketBase "diary_entries" collection schema.

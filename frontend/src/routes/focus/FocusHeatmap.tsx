@@ -2,7 +2,7 @@ import { createMemo, createResource, createSignal, Show } from "solid-js";
 
 import pb from "../../lib/pb";
 import { formatDisplayDate, shiftDate, todayDate } from "../../lib/date";
-import Heatmap from "../common/Heatmap";
+import Heatmap from "../../components/Heatmap";
 import type { FocusTaskRecord } from "./FocusTaskForm";
 
 // Number of full weeks (Sun-Sat) shown, roughly a year of history
@@ -60,7 +60,7 @@ export interface FocusHeatmapProps {
 }
 
 // Focus-specific wrapper around the generic Heatmap component (see
-// components/common/Heatmap.tsx): fetches focus_tasks and derives a
+// components/Heatmap.tsx): fetches focus_tasks and derives a
 // per-day achievement rate, leaving the actual grid rendering to the
 // reusable component. Fetches its own data (like TagSelect fetches
 // diary_tags), since it covers a much wider date range than the

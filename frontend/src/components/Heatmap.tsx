@@ -1,5 +1,5 @@
 import { createMemo, For } from "solid-js";
-import { dayOfWeek, shiftDate, todayDate } from "../../lib/date";
+import { dayOfWeek, shiftDate, todayDate } from "../lib/date";
 
 export interface HeatmapProps {
   // Number of full weeks (Sun-Sat) to display, ending on the most

@@ -1,11 +1,11 @@
 import { createSignal, onMount, onCleanup, For, Show } from "solid-js";
 
 import pb from "../../lib/pb";
-import DateNav from "../../components/common/DateNav";
-import FocusTaskItem from "../../components/focus/FocusTaskItem";
-import FocusTaskForm from "../../components/focus/FocusTaskForm";
-import FocusHeatmap from "../../components/focus/FocusHeatmap";
-import type { FocusTaskRecord } from "../../components/focus/FocusTaskForm";
+import DateNav from "../../components/DateNav";
+import FocusTaskItem from "./FocusTaskItem";
+import FocusTaskForm from "./FocusTaskForm";
+import FocusHeatmap from "./FocusHeatmap";
+import type { FocusTaskRecord } from "./FocusTaskForm";
 import { todayDate } from "../../lib/date";
 
 const MAX_TASKS = 3;

@@ -1,7 +1,7 @@
 import { createEffect, createSignal } from "solid-js";
 import { useEditorDerivedValue } from "prosekit/solid";
 
-import SaveButton from "../common/SaveButton";
+import SaveButton from "../SaveButton";
 
 export interface EditorSaveButtonProps {
   saving: boolean;
