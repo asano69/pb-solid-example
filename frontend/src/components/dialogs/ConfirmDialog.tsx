@@ -2,17 +2,25 @@ import { createSignal } from "solid-js";
 import { AlertDialog } from "@kobalte/core/alert-dialog";
 import { X, Check } from "../../lib/icons";
 
+export interface ConfirmDialogProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  title: string;
+  description: string;
+  onConfirm: () => Promise<void>;
+  confirmLabel?: string;
+  submittingLabel?: string;
+  errorMessage?: string;
+}
+
 // Reusable "are you sure?" confirmation dialog. Fully controlled via
 // `open`/`onOpenChange` so it can be opened from anywhere (e.g. a
 // dropdown menu item) instead of needing its own AlertDialog.Trigger.
-//
-// Props: open, onOpenChange, title, description, onConfirm
-// (async () => void), confirmLabel, submittingLabel, errorMessage.
-export default function ConfirmDialog(props) {
+export default function ConfirmDialog(props: ConfirmDialogProps) {
   const [submitting, setSubmitting] = createSignal(false);
   const [error, setError] = createSignal("");
 
-  const handleOpenChange = (open) => {
+  const handleOpenChange = (open: boolean) => {
     // Drop any stale error once the dialog closes, however it closed
     // (confirm, cancel, Esc, or the overlay).
     if (!open) setError("");
