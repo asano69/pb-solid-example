@@ -78,13 +78,12 @@
     margin: 0.75em 0;
   }
 
-  /* Cell for the Focus achievement heatmap (see
-   * components/focus/FocusHeatmap.tsx). Background color is set inline
-   * per-cell in the component, not here, so it always applies
-   * regardless of Tailwind's cascade layer ordering. No border, just a
-   * flat fill (including a light gray for "no tasks"), matching
-   * GitHub's own contribution graph. Sized to match GitHub's own
-   * cells (~10px). */
+  /* Cell for the generic Heatmap component (see
+   * components/common/Heatmap.tsx). Background color is set inline
+   * per-cell by the caller, not here, so it always applies regardless
+   * of Tailwind's cascade layer ordering. No border, just a flat fill,
+   * matching GitHub's own contribution graph. Sized to match GitHub's
+   * own cells (~10px). */
   .heat-cell {
     @apply h-3 w-3 shrink-0 cursor-pointer rounded-[2px] transition-colors;
   }
